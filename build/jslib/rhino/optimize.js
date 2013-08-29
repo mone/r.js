@@ -126,12 +126,12 @@ define(['logger', 'env!env/file'], function (logger, file) {
                 
                 var wrapperStart = "(function(){";
                 if (config.avoidGlobals) {
-                  optimized = wrapperStart + optimized + "}());";
+                    optimized = wrapperStart + optimized + "}());";
                 }
 
                 if (config.generateSourceMaps && result.sourceMap && outFileName) {
                     if (config.avoidGlobals) {
-                      result.sourceMap.setWrapperPrefix(wrapperStart);
+                        result.sourceMap.setWrapperPrefix(wrapperStart);
                     }
                 
                     outBaseName = (new java.io.File(outFileName)).getName();
