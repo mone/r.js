@@ -189,7 +189,16 @@
         //at a later moment but that will probably ruin the source map if one 
         //was generated. Setting this parameter to true will wrap the code
         //avoiding globals and will also adjust the source map file.
-        avoidGlobals: false
+        avoidGlobals: false,
+        //Specify a list of files to be used as externs during compilation.
+        //See the documentation for Closure compiler for more information.
+        externs: [
+          "path/to/externs.js"
+        ],
+        //If ignoreDefaultExterns the closure compiler default externs will 
+        //not be  used. See the documentation for Closure compiler for more
+        //information.
+        ignoreDefaultExterns: false
     },
 
     //Allow CSS optimizations. Allowed values:
