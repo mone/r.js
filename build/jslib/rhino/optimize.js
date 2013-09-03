@@ -123,8 +123,17 @@ define(['logger', 'env!env/file'], function (logger, file) {
             result = compiler.compile(CommandLineRunner.getDefaultExterns(), sourceListArray, options);
             if (result.success) {
                 optimized = String(compiler.toSource());
+                
+                var wrapperStart = "(function(){";
+                if (config.avoidGlobals) {
+                    optimized = wrapperStart + optimized + "}());";
+                }
 
                 if (config.generateSourceMaps && result.sourceMap && outFileName) {
+                    if (config.avoidGlobals) {
+                        result.sourceMap.setWrapperPrefix(wrapperStart);
+                    }
+                
                     outBaseName = (new java.io.File(outFileName)).getName();
 
                     file.saveUtf8File(outFileName + ".src", fileContents);
