@@ -181,7 +181,17 @@
     closure: {
         CompilerOptions: {},
         CompilationLevel: 'SIMPLE_OPTIMIZATIONS',
-        loggingLevel: 'WARNING'
+        loggingLevel: 'WARNING',
+        //Specify a list of files to be used as externs during compilation.
+        //See the documentation for Closure compiler for more information.
+        externs: [
+          "path/to/externs.js"
+        ],
+        //If ignoreDefaultExterns the closure compiler default externs will 
+        //not be  used. See the documentation for Closure compiler for more
+        //information.
+        ignoreDefaultExterns: false
+        
     },
 
     //Allow CSS optimizations. Allowed values:
